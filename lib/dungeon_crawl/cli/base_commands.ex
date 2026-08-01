@@ -7,6 +7,7 @@ defmodule DungeonCrawl.CLI.BaseCommands do
     |> Enum.each(fn {option, index} ->
       Shell.info("#{index} - #{option}")
     end)
+
     options
   end
 

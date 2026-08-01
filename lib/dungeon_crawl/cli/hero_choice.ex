@@ -9,14 +9,14 @@ defmodule DungeonCrawl.CLI.HeroChoice do
     heroes = DungeonCrawl.Heroes.all()
     find_hero_by_index = &Enum.at(heroes, &1)
 
-    hero_names = Enum.map(heroes, &(&1.name))
+    hero_names = Enum.map(heroes, & &1.name)
 
     hero_names
     |> display_options
 
     hero_names
     |> generate_question
-    |> Shell.prompt
+    |> Shell.prompt()
     |> parse_answer
     |> find_hero_by_index.()
     |> confirm_hero
@@ -27,5 +27,4 @@ defmodule DungeonCrawl.CLI.HeroChoice do
     Shell.info(chosen.description)
     if Shell.yes?("Confirm?"), do: chosen, else: start()
   end
-
 end
